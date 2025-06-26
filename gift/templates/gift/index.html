@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.scss' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="shortcut icon" href="{% static 'gift.ico' %}" >
+    <title>Christmas-Gift</title>
+</head>
+<body style="background-color: #121212;;">
+    
+    <canvas></canvas>
+
+    
+   
+
+   
+
+    <div class="window">
+        <div class="santa">
+            <div class="head">
+                <div class="face">
+                    <div class="redhat">
+                        <div class="whitepart"></div>
+                        <div class="redpart"></div>
+                        <div class="hatball"></div>
+                    </div>
+                    <div class="eyes"></div>
+                    <div class="beard">
+                        <div class="nouse"></div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+                <div class="ears"></div>
+            </div>
+            <div class="body"></div>
+        </div>
+        
+    </div>
+
+    <div class="message" style="margin-top: 0%; text-align: center;">
+        <h1>Merry Christmas!</h1>
+        <span class="to">to</span><br>
+        {% if name %}
+        <span class="name">{{name.name}}</span>
+        {% else %}
+        <span class="name">Daniel Joseph</span>
+        {% endif %}
+       <br>
+        <a class="btn  btn-lg" data-toggle="modal" data-target="#myModal">Click Me to Change Name</a>
+        <br><span style="color: rgb(102, 255, 0); font-size: 20px;">Share LinK:</span>
+        <input value="{{ request.build_absolute_uri }}" class="link" style="color: rgb(28, 226, 144); font-family: 'Courier New', Courier, monospace; background-color: rgba(88, 136, 128, 0.425);" href="">
+        <h2 class="">Made with ♥ by: <a href="https://www.linkedin.com/in/daniel-turu-852253218/" target="_blank">Turu Daniel Joseph</a></h2>
+
+
+
+
+        
+    </div>
+
+    <div class="container">
+        
+        <!-- Trigger the modal with a button -->
+        <!-- Modal -->
+        <div style="text-align: center;" class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <form  method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="modal-content" style="background-color: rgba(228, 228, 228, 0.459);color: black; font-family: 'Mountains of Christmas'; font-size: 25px;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <strong><p class="modal-title">Wish Your love once and friend</p>
+                    
+                  <p class="modal-title">A Merry Cristmas!</p></strong>
+                </div>
+                <div class="modal-body">
+                  {{ form.as_p }}
+                  <button type="submit">submit</button>
+                </div>
+                <div class="modal-footer">
+                  
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+      
+
+
+
+
+
+<script src="{% static 'mtjs.js' %}"></script>
+</body>
+</html>
